@@ -142,14 +142,14 @@ extern "C" {
     pub fn sk_disk_get_size(d: *mut SkDisk, bytes: *mut u64) -> ::libc::c_int;
     pub fn sk_disk_check_sleep_mode(d: *mut SkDisk, awake: *mut SkBool) -> ::libc::c_int;
     pub fn sk_disk_identify_is_available(d: *mut SkDisk, available: *mut SkBool) -> ::libc::c_int;
-    pub fn sk_disk_identify_parse(d: *mut *mut SkDisk, data: *const SkIdentifyParsedData) -> ::libc::c_int;
+    pub fn sk_disk_identify_parse(d: *mut SkDisk, data: *const *const SkIdentifyParsedData) -> ::libc::c_int;
     pub fn sk_disk_smart_is_available(d: *mut SkDisk, available: *mut SkBool) -> ::libc::c_int;
     pub fn sk_disk_smart_status(d: *mut SkDisk, good: *mut SkBool) -> ::libc::c_int;
     pub fn sk_disk_smart_read_data(d: *mut SkDisk) -> ::libc::c_int;
     pub fn sk_disk_get_blob(d: *mut *mut SkDisk, blob: *const ::libc::c_void, size: *mut size_t) -> ::libc::c_int;
     pub fn sk_disk_set_blob(d: *mut SkDisk, blob: *const ::libc::c_void, size: size_t) -> ::libc::c_int;
     pub fn sk_disk_smart_parse(d: *mut *mut SkDisk, data: *const SkSmartParsedData) -> ::libc::c_int;
-    //pub fn sk_disk_smart_parse_attributes(d: *mut SkDisk, cb: SkSmartAttributeParseCallback, userdata: *mut ::libc::c_void) -> ::libc::c_int;
+    pub fn sk_disk_smart_parse_attributes(d: *mut SkDisk, cb: extern fn(d: *mut SkDisk, data: *const SkSmartAttributeParsedData, userdata: *mut ::libc::c_void), userdata: *mut ::libc::c_void) -> ::libc::c_int;
     pub fn sk_disk_smart_self_test(d: *mut SkDisk, test: SkSmartSelfTest) -> ::libc::c_int;
     pub fn sk_disk_smart_get_power_on(d: *mut SkDisk, mseconds: *mut u64) -> ::libc::c_int;
     pub fn sk_disk_smart_get_power_cycle(d: *mut SkDisk, count: *mut u64) -> ::libc::c_int;
