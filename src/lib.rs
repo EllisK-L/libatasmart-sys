@@ -92,25 +92,25 @@ pub enum SkSmartAttributeUnit {
 #[repr(C)]
 #[derive(Debug)]
 pub struct SkSmartAttributeParsedData {
-    pub id: uint8_t,
-    pub name: *const ::libc::c_char,
-    pub pretty_unit: SkSmartAttributeUnit,
-    pub flags: uint16_t ,
-    pub threshold: uint8_t,
+    pub id: u8,
+    pub name: *const c_char,
+    pub pretty_unit: SkSmartAttributeUnit, /* for pretty_value */
+    pub flags: u16,
+    pub threshold: u8,
     pub threshold_valid: SkBool,
     pub online: SkBool,
     pub prefailure: SkBool,
-    pub good_now: SkBool, 
+    pub good_now: SkBool,
     pub good_now_valid: SkBool,
     pub good_in_the_past: SkBool,
     pub good_in_the_past_valid: SkBool,
     pub current_value_valid: SkBool,
     pub worst_value_valid: SkBool,
     pub warn: SkBool,
-    pub current_value: uint8_t, 
-    pub worst_value: uint8_t,
-    pub pretty_value: uint64_t,
-    pub raw: [uint8_t; 6],
+    pub current_value: u8,
+    pub worst_value: u8,
+    pub pretty_value: u64,
+    pub raw: [u8; 6],
 }
 
 pub enum SkDisk{
