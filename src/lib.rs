@@ -1,6 +1,6 @@
 #![allow(non_camel_case_types)]
 extern crate libc;
-use self::libc::{c_char, size_t, uint8_t, uint16_t, uint32_t, uint64_t};
+use self::libc::{c_char, size_t};
 
 pub type SkBool = ::libc::c_uint;
 
@@ -58,9 +58,9 @@ pub enum SkSmartSelfTestExecutionStatus {
 pub struct SkSmartParsedData {
     /* Volatile data */
     pub offline_data_collection_status: SkSmartOfflineDataCollectionStatus ,
-    pub total_offline_data_collection_seconds: uint32_t,
+    pub total_offline_data_collection_seconds: u32,
     pub self_test_execution_status: SkSmartSelfTestExecutionStatus,
-    pub self_test_execution_percent_remaining: uint32_t,
+    pub self_test_execution_percent_remaining: u32,
 
     /* Fixed data */
     pub short_and_extended_test_available: SkBool,
@@ -68,9 +68,9 @@ pub struct SkSmartParsedData {
     pub start_test_available: SkBool,
     pub abort_test_available: SkBool,
 
-    pub short_test_polling_minutes: uint32_t,
-    pub extended_test_polling_minutes: uint32_t,
-    pub conveyance_test_polling_minutes: uint32_t,
+    pub short_test_polling_minutes: u32,
+    pub extended_test_polling_minutes: u32,
+    pub conveyance_test_polling_minutes: u32,
 }
 
 #[repr(C)]
@@ -135,11 +135,11 @@ extern "C" {
     pub fn sk_smart_offline_data_collection_status_to_string(status: SkSmartOfflineDataCollectionStatus) -> *const ::libc::c_char;
     pub fn sk_smart_self_test_to_string(test: SkSmartSelfTest) -> *const ::libc::c_char;
     pub fn sk_smart_self_test_available(d: *const SkSmartParsedData, test: SkSmartSelfTest) -> SkBool;
-    pub fn sk_smart_self_test_polling_minutes(d: *const SkSmartParsedData, test: SkSmartSelfTest) -> uint32_t;
+    pub fn sk_smart_self_test_polling_minutes(d: *const SkSmartParsedData, test: SkSmartSelfTest) -> u32;
     pub fn sk_smart_attribute_unit_to_string(unit: SkSmartAttributeUnit) -> *const ::libc::c_char;
     pub fn sk_smart_overall_to_string(overall: SkSmartOverall) -> *const ::libc::c_char;
     pub fn sk_disk_open(name: *const ::libc::c_char, d: *mut *mut SkDisk) -> ::libc::c_int;
-    pub fn sk_disk_get_size(d: *mut SkDisk, bytes: *mut uint64_t) -> ::libc::c_int;
+    pub fn sk_disk_get_size(d: *mut SkDisk, bytes: *mut u64) -> ::libc::c_int;
     pub fn sk_disk_check_sleep_mode(d: *mut SkDisk, awake: *mut SkBool) -> ::libc::c_int;
     pub fn sk_disk_identify_is_available(d: *mut SkDisk, available: *mut SkBool) -> ::libc::c_int;
     pub fn sk_disk_identify_parse(d: *mut *mut SkDisk, data: *const SkIdentifyParsedData) -> ::libc::c_int;
@@ -151,10 +151,10 @@ extern "C" {
     pub fn sk_disk_smart_parse(d: *mut *mut SkDisk, data: *const SkSmartParsedData) -> ::libc::c_int;
     //pub fn sk_disk_smart_parse_attributes(d: *mut SkDisk, cb: SkSmartAttributeParseCallback, userdata: *mut ::libc::c_void) -> ::libc::c_int;
     pub fn sk_disk_smart_self_test(d: *mut SkDisk, test: SkSmartSelfTest) -> ::libc::c_int;
-    pub fn sk_disk_smart_get_power_on(d: *mut SkDisk, mseconds: *mut uint64_t) -> ::libc::c_int;
-    pub fn sk_disk_smart_get_power_cycle(d: *mut SkDisk, count: *mut uint64_t) -> ::libc::c_int;
-    pub fn sk_disk_smart_get_bad(d: *mut SkDisk, sectors: *mut uint64_t) -> ::libc::c_int;
-    pub fn sk_disk_smart_get_temperature(d: *mut SkDisk, mkelvin: *mut uint64_t ) -> ::libc::c_int;
+    pub fn sk_disk_smart_get_power_on(d: *mut SkDisk, mseconds: *mut u64) -> ::libc::c_int;
+    pub fn sk_disk_smart_get_power_cycle(d: *mut SkDisk, count: *mut u64) -> ::libc::c_int;
+    pub fn sk_disk_smart_get_bad(d: *mut SkDisk, sectors: *mut u64) -> ::libc::c_int;
+    pub fn sk_disk_smart_get_temperature(d: *mut SkDisk, mkelvin: *mut u64 ) -> ::libc::c_int;
     pub fn sk_disk_smart_get_overall(d: *mut SkDisk, overall: *mut SkSmartOverall) -> ::libc::c_int;
     pub fn sk_disk_dump(d: *mut SkDisk) -> ::libc::c_int;
     pub fn sk_disk_free(d: *mut SkDisk) -> ::libc::c_void;
