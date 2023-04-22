@@ -89,8 +89,8 @@ pub enum SkSmartAttributeUnit {
 }
 
 
-#[repr(C, packed)]
-// #[derive(Debug)]
+#[repr(C)]
+#[derive(Debug)]
 pub struct SkSmartAttributeParsedData {
     pub id: u8,
     pub name: *const c_char,
