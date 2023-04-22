@@ -99,16 +99,16 @@ pub struct SkSmartAttributeParsedData {
     pub pretty_unit: SkSmartAttributeUnit, /* for pretty_value */
     pub flags: u16,
     pub threshold: u8,
-    #[bitfield(name="threshold_valid", ty="u8", bits="0..=0")]
-    #[bitfield(name="online", ty="u8", bits="1..=1")]
-    #[bitfield(name="prefailure", ty="u8", bits="2..=2")]
-    #[bitfield(name="good_now", ty="u8", bits="3..=3")]
-    #[bitfield(name="good_now_valid", ty="u8", bits="4..=4")]
-    #[bitfield(name="good_in_the_past", ty="u8", bits="5..=5")]
-    #[bitfield(name="good_in_the_past_valid", ty="u8", bits="6..=6")]
-    #[bitfield(name="current_value_valid", ty="u8", bits="7..=7")]
-    #[bitfield(name="worst_value_valid", ty="u8", bits="8..=8")]
-    #[bitfield(name="warn", ty="u8", bits="8..=8")]
+    #[bitfield(name="threshold_valid", ty="SkBool", bits="0..=0")]
+    #[bitfield(name="online", ty="SkBool", bits="1..=1")]
+    #[bitfield(name="prefailure", ty="SkBool", bits="2..=2")]
+    #[bitfield(name="good_now", ty="SkBool", bits="3..=3")]
+    #[bitfield(name="good_now_valid", ty="SkBool", bits="4..=4")]
+    #[bitfield(name="good_in_the_past", ty="SkBool", bits="5..=5")]
+    #[bitfield(name="good_in_the_past_valid", ty="SkBool", bits="6..=6")]
+    #[bitfield(name="current_value_valid", ty="SkBool", bits="7..=7")]
+    #[bitfield(name="worst_value_valid", ty="SkBool", bits="8..=8")]
+    #[bitfield(name="warn", ty="SkBool", bits="8..=8")]
     pub threshold_valid_online_prefailure_good_now_good_now_valid_good_in_the_past_good_in_the_past_valid_current_value_valid_worst_value_valid_warn: [u8; 9],
     // pub threshold_valid: u32,
     // pub online: u32,
