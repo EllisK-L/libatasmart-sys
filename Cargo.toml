@@ -8,3 +8,4 @@ repository = "https://github.com/cholcombe973/libatasmart-sys"
 
 [dependencies]
 libc = "~0.2"
+bitflags = "2.1.0"

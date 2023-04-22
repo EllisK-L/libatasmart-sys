@@ -1,5 +1,7 @@
 #![allow(non_camel_case_types)]
 extern crate libc;
+extern crate bitflags;
+use bitflags::bitflags;
 use self::libc::{c_char, size_t};
 
 pub type SkBool = ::libc::c_uint;
@@ -88,6 +90,15 @@ pub enum SkSmartAttributeUnit {
 
 }
 
+bitflags! {
+    #[repr(C)]
+    #[derive(Debug)]
+    pub struct Flags: u32 {
+        const TRUE = 0b00000001;
+        const FALSE = 0b00000000;
+    }
+}
+
 
 #[repr(C)]
 #[derive(Debug)]
@@ -97,16 +108,16 @@ pub struct SkSmartAttributeParsedData {
     pub pretty_unit: SkSmartAttributeUnit, /* for pretty_value */
     pub flags: u16,
     pub threshold: u8,
-    pub threshold_valid: bool,
-    pub online: bool,
-    pub prefailure: bool,
-    pub good_now: bool,
-    pub good_now_valid: bool,
-    pub good_in_the_past: bool,
-    pub good_in_the_past_valid: bool,
-    pub current_value_valid: bool,
-    pub worst_value_valid: bool,
-    pub warn: bool,
+    pub threshold_valid: Flags,
+    pub online: Flags,
+    pub prefailure: Flags,
+    pub good_now: Flags,
+    pub good_now_valid: Flags,
+    pub good_in_the_past: Flags,
+    pub good_in_the_past_valid: Flags,
+    pub current_value_valid: Flags,
+    pub worst_value_valid: Flags,
+    pub warn: Flags,
     pub current_value: u8,
     pub worst_value: u8,
     pub pretty_value: u64,
