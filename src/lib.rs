@@ -2,6 +2,7 @@
 extern crate libc;
 extern crate c2rust_bitfields;
 use c2rust_bitfields::BitfieldStruct;
+
 use self::libc::{c_char, size_t};
 
 pub type SkBool = ::libc::c_uint;
@@ -109,8 +110,7 @@ pub struct SkSmartAttributeParsedData {
     #[bitfield(name="current_value_valid", ty="SkBool", bits="7..=7")]
     #[bitfield(name="worst_value_valid", ty="SkBool", bits="8..=8")]
     #[bitfield(name="warn", ty="SkBool", bits="9..=9")]
-    pub threshold_valid_online_prefailure_good_now_good_now_valid_good_in_the_past_good_in_the_past_valid_current_value_valid_worst_value_valid_warn: [u8; 10],
-    pub _pad: [u8; 3],
+    pub threshold_valid_online_prefailure_good_now_good_now_valid_good_in_the_past_good_in_the_past_valid_current_value_valid_worst_value_valid_warn: [u8; 2],
     // pub threshold_valid: u32,
     // pub online: u32,
     // pub prefailure: u32,
